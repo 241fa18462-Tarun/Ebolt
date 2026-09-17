@@ -1,0 +1,409 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #071923;
+  --color-navy-2: #0a242f;
+  --color-ink: #05141c;
+  --color-sky: #8ed8f5;
+  --color-sky-2: #75c9eb;
+  --color-ice: #b8edff;
+  --color-cream: #f4fbff;
+  --color-muted: #9bb8c4;
+  --color-dim: #66828d;
+  --color-line: rgb(142 216 245 / 0.16);
+  --color-danger: #ff9cac;
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --radius-xl: 1.25rem;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: #071923;
+    color: var(--color-cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Keyboard users need to see where they are. */
+  :focus-visible {
+    outline: 2px solid var(--color-sky);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+.app-bg {
+  background:
+    radial-gradient(circle at 12% 15%, rgba(142, 216, 245, 0.12), transparent 27%),
+    radial-gradient(circle at 88% 80%, rgba(80, 180, 235, 0.09), transparent 28%),
+    linear-gradient(145deg, #071923 0%, #0a242f 52%, #071923 100%);
+}
+
+.login-sky {
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.28) 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 75%, rgba(255, 255, 255, 0.22) 0 2px, transparent 3px),
+    linear-gradient(135deg, #8ed4f0 0%, #bcecff 48%, #82cce9 100%);
+  background-size: auto, auto, 220% 220%;
+  animation: loginDrift 26s ease-in-out infinite;
+}
+@keyframes loginDrift {
+  0%,
+  100% {
+    background-position:
+      0 0,
+      0 0,
+      0% 50%;
+  }
+  50% {
+    background-position:
+      0 0,
+      0 0,
+      100% 50%;
+  }
+}
+
+.glass-card {
+  border: 1px solid rgb(142 216 245 / 0.14);
+  background: linear-gradient(145deg, rgb(10 36 47 / 0.88), rgb(7 25 35 / 0.82));
+  box-shadow: 0 18px 55px rgb(4 35 48 / 0.16);
+}
+
+/* ---------------------------------------------------------------- */
+/* Buttons                                                           */
+/* ---------------------------------------------------------------- */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  border: 1px solid rgb(142 216 245 / 0.18);
+  background: rgb(255 255 255 / 0.04);
+  color: #bde3ef;
+  padding: 0 14px;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.1px;
+  white-space: nowrap;
+  transition:
+    transform 150ms ease,
+    border-color 150ms ease,
+    background-color 150ms ease,
+    color 150ms ease;
+}
+.pill:hover:not(:disabled) {
+  border-color: rgb(142 216 245 / 0.45);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.pill:active:not(:disabled) {
+  transform: translateY(0) scale(0.97);
+}
+
+.pill-lg {
+  height: 46px;
+  padding: 0 24px;
+  font-size: 13px;
+}
+
+.pill-primary {
+  background: linear-gradient(90deg, #75c9eb, #b8edff);
+  color: #06202b;
+  border-color: transparent;
+  box-shadow: 0 9px 26px rgb(112 202 237 / 0.2);
+}
+.pill-primary:hover:not(:disabled) {
+  color: #04161e;
+  border-color: transparent;
+  box-shadow: 0 12px 32px rgb(112 202 237 / 0.3);
+}
+
+.pill-danger {
+  background: rgb(255 156 172 / 0.12);
+  border-color: rgb(255 156 172 / 0.4);
+  color: var(--color-danger);
+}
+.pill-danger:hover:not(:disabled) {
+  background: rgb(255 156 172 / 0.2);
+  border-color: rgb(255 156 172 / 0.65);
+  color: #ffd2da;
+}
+
+/* ---------------------------------------------------------------- */
+/* Animated hero backdrop                                            */
+/* ---------------------------------------------------------------- */
+
+/*
+ * Three colour fields drift on independent, prime-ish durations so the
+ * composite never visibly repeats. Blur + screen blending keeps them reading
+ * as light rather than as shapes.
+ */
+.aurora-veil {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.aurora-veil-a {
+  top: -28%;
+  left: -12%;
+  width: 62%;
+  height: 118%;
+  background: radial-gradient(circle at 50% 50%, rgba(78, 205, 235, 0.62), rgba(78, 205, 235, 0) 70%);
+  animation: auroraA 19s ease-in-out infinite;
+}
+
+.aurora-veil-b {
+  right: -16%;
+  bottom: -34%;
+  width: 66%;
+  height: 122%;
+  background: radial-gradient(circle at 50% 50%, rgba(94, 234, 212, 0.44), rgba(94, 234, 212, 0) 70%);
+  animation: auroraB 23s ease-in-out infinite;
+}
+
+.aurora-veil-c {
+  top: 6%;
+  left: 32%;
+  width: 52%;
+  height: 92%;
+  background: radial-gradient(circle at 50% 50%, rgba(139, 130, 246, 0.42), rgba(139, 130, 246, 0) 72%);
+  animation: auroraC 29s ease-in-out infinite;
+}
+
+@keyframes auroraA {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.75;
+  }
+  33% {
+    transform: translate3d(14%, 8%, 0) scale(1.16);
+    opacity: 1;
+  }
+  66% {
+    transform: translate3d(6%, -9%, 0) scale(0.94);
+    opacity: 0.6;
+  }
+}
+@keyframes auroraB {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1.05);
+    opacity: 0.65;
+  }
+  40% {
+    transform: translate3d(-16%, -12%, 0) scale(0.9);
+    opacity: 0.95;
+  }
+  70% {
+    transform: translate3d(-5%, 7%, 0) scale(1.2);
+    opacity: 0.5;
+  }
+}
+@keyframes auroraC {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(0.95) rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(-12%, 12%, 0) scale(1.25) rotate(10deg);
+    opacity: 0.85;
+  }
+}
+
+/* A perspective grid crawling toward the horizon, for depth under the mesh. */
+.aurora-mesh {
+  mask-image: radial-gradient(ellipse 44% 50% at 50% 48%, transparent 30%, #000 78%);
+  -webkit-mask-image: radial-gradient(ellipse 44% 50% at 50% 48%, transparent 30%, #000 78%);
+}
+
+/* Settles the middle of the panel so the headline reads against calm ground. */
+.aurora-core {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 42% 48% at 50% 48%, rgba(4, 18, 26, 0.72), transparent 72%);
+}
+
+/* On a narrow panel the content fills almost the whole area, so the mesh is
+   pulled back rather than masked around the text. */
+@media (max-width: 640px) {
+  .aurora-mesh {
+    opacity: 0.5;
+  }
+  .aurora-core {
+    background: radial-gradient(ellipse 78% 58% at 50% 46%, rgba(4, 18, 26, 0.8), transparent 80%);
+  }
+}
+
+.aurora-grid {
+  position: absolute;
+  inset: -20% -10% -10%;
+  background-image:
+    linear-gradient(rgba(142, 216, 245, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(142, 216, 245, 0.12) 1px, transparent 1px);
+  background-size: 62px 62px;
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 45%, #000 20%, transparent 78%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 45%, #000 20%, transparent 78%);
+  opacity: 0.4;
+  animation: gridCrawl 18s linear infinite;
+}
+@keyframes gridCrawl {
+  to {
+    background-position:
+      0 62px,
+      62px 0;
+  }
+}
+
+/* A slow band of light sweeping across, so the panel never looks static. */
+.aurora-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(184, 237, 255, 0.07) 48%,
+    rgba(184, 237, 255, 0.14) 52%,
+    transparent 62%
+  );
+  background-size: 260% 100%;
+  animation: sheenSweep 9s ease-in-out infinite;
+}
+@keyframes sheenSweep {
+  0% {
+    background-position: 160% 0;
+  }
+  60%,
+  100% {
+    background-position: -60% 0;
+  }
+}
+
+.aurora-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 90% 75% at 50% 45%, transparent 42%, rgba(4, 18, 26, 0.78) 100%);
+}
+
+/* Headline gradient that travels along the text. */
+.aurora-text {
+  background: linear-gradient(100deg, #f4fbff 8%, #8ed8f5 32%, #a5f3e6 50%, #b8c6ff 68%, #f4fbff 92%);
+  background-size: 260% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: textFlow 11s linear infinite;
+}
+@keyframes textFlow {
+  to {
+    background-position: -260% center;
+  }
+}
+
+/* ---------------------------------------------------------------- */
+/* Dialog + toast                                                    */
+/* ---------------------------------------------------------------- */
+
+.dialog-scrim {
+  background: rgb(2 10 15 / 0.72);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 160ms ease both;
+}
+
+.dialog-panel {
+  border: 1px solid rgb(142 216 245 / 0.2);
+  background: linear-gradient(150deg, #0a242f, #061720);
+  box-shadow: 0 30px 80px rgb(0 0 0 / 0.55);
+  animation: dialogIn 190ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.toast-in {
+  animation: toastIn 240ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes toastIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.field-in {
+  animation: fieldIn 0.55s both;
+}
+@keyframes fieldIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.orb-ring {
+  box-shadow:
+    0 0 0 2px rgb(142 216 245 / 0.35),
+    0 0 18px rgb(142 216 245 / 0.35);
+}
+
+/* Reduced motion last, so it overrides every animation defined above. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

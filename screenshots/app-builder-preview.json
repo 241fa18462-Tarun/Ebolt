@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Ebolt",
+      "hasCanvas": false,
+      "bodyTextLen": 178,
+      "bodyTextHash": "cf628011ac41bb57f7d778d734969a1e7188bb61cc31588d3aaa9606c105402d",
+      "bodyTextPrefix": "EBOLT WELCOME BACK! Don't have an account? Sign up USERNAME PASS",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Ebolt",
+      "hasCanvas": false,
+      "bodyTextLen": 178,
+      "bodyTextHash": "cf628011ac41bb57f7d778d734969a1e7188bb61cc31588d3aaa9606c105402d",
+      "bodyTextPrefix": "EBOLT WELCOME BACK! Don't have an account? Sign up USERNAME PASS",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}
